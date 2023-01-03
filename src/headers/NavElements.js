@@ -21,9 +21,6 @@ export const MenuLink = styled(Link)`
   &.active {
     color: #fff;
   };
-  &.hover {
-    color: yellow;
-  }
 `
 export const Hamburger = styled(FaBars)`
   display: none;

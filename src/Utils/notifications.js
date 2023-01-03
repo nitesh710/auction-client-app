@@ -13,11 +13,11 @@ const toastObject = {
     theme: "colored"
 }
 const showNotification = async (message, type) => {
-    if(type == 'SUCCESS'){
+    if(type === 'SUCCESS'){
         toast.success(message, toastObject);
-    } else if(type == "FAILED"){
+    } else if(type === "FAILED"){
         toast.error(message, toastObject);
-    } else if(type == "WARNING"){
+    } else if(type === "WARNING"){
         toast.warn(message, toastObject);
     }
 };

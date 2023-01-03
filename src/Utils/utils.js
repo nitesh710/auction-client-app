@@ -15,7 +15,7 @@ const validateObject = async(object) => {
 }
 
 function isValidString(itemValue) {
-    if(itemValue.trim() == ""){
+    if(itemValue.trim() === ""){
         return false;
     } else {
         return true;

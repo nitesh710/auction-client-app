@@ -16,6 +16,8 @@ function Login() {
       case "password":
         setPassword(value);
         break;
+      default:
+        break;
     }
   };
 
@@ -30,20 +32,21 @@ function Login() {
       console.log("response", response);
       ShowNotification(response.data.message, "SUCCESS");
     } catch (e) {
-      console.log("Error: ", e)
+      console.log("Error: ", e);
       ShowNotification(e.response.data.message, "FAILED");
     }
   };
 
   return (
-    <div>
-      <div className="card" style={{"maxWidth": "41rem"}}>
-        <h5 className="card-header">Login</h5>
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Username</label>
-              <div className="col-sm-10">
+    <div className="row">
+      <div className="col-md-4"></div>
+      <div className="col-md-4">
+        <div className="card">
+          <h5 className="card-header">Login</h5>
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Username</label>
                 <input
                   type="text"
                   className="form-control"
@@ -53,10 +56,8 @@ function Login() {
                   onChange={handleInput}
                 ></input>
               </div>
-            </div>
-            <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Password</label>
-              <div className="col-sm-10">
+              <div className="form-group">
+                <label>Password</label>
                 <input
                   type="text"
                   className="form-control"
@@ -66,18 +67,23 @@ function Login() {
                   onChange={handleInput}
                 ></input>
               </div>
-            </div>
-            <div className="form-group row">
-              <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary">
+              <div className="form-group">
+                <button
+                  type="submit"
+                  className="px-1.5 py-1.5 bg-blue-500 border-blue-600 text-white rounded outline outline-offset-2 outline-1"
+                >
                   Login
                 </button>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+        </div>
+        <div>
+          <p className="mt-2" style={{ color: "#ff7f00f0" }}>
+            New user, please go to <Link to="/signup" className="text-white">Sign Up</Link> page
+          </p>
         </div>
       </div>
-      <p className="mt-2" style={{color: "#ff7f00f0"}}>New user, please go to <Link to="/signup">Sign Up</Link> page</p>
     </div>
   );
 }
