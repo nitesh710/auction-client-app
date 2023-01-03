@@ -1,13 +1,15 @@
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Notifications } from "react-push-notification";
+import { ToastContainer } from 'react-toastify';
+import Header from "./headers/NavBar";
 
 function App (){
     return (
-        <div>
-            <Notifications />
+        <div style={{backgroundImage: "linear-gradient(180deg,#1e4fc6 0,#0941ba 50%,#174ac0)", height:'100vh'}}>
+            <ToastContainer />
             <Router>
+                <Header />
                 <div className="container mt-5">
                     <Routes>
                         <Route path="/" element={<Login />}></Route>

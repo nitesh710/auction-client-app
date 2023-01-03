@@ -40,15 +40,16 @@ function SignUp() {
         let isValidate = await ValidateObject(userObject);
         if(isValidate) {
             let response = await UserClient.post("/signup", userObject);
-            console.log("response", response);
+            ShowNotification(response.data.message, "SUCCESS");
         }
     } catch (e) {
         console.log("Error: ", e);
+        ShowNotification(e.response.data.message, "FAILED");
     }
   };
   return (
     <div>
-      <div className="card">
+      <div className="card" style={{"maxWidth": "41rem"}}>
         <h5 className="card-header">Sign Up</h5>
         <div className="card-body">
           <form onSubmit={handleSubmit}>
@@ -114,10 +115,12 @@ function SignUp() {
           </form>
         </div>
       </div>
-      <p className="mt-2">
-        Already signed up, please login using <Link to="/login">Login</Link>{" "}
-        page
-      </p>
+      <div>
+        <p className="mt-2" style={{color: "#ff7f00f0"}}>
+          Already signed up, please login using <Link to="/login">Login</Link>{" "}
+          page
+        </p>
+      </div>
     </div>
   );
 }

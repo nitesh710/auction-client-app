@@ -28,16 +28,16 @@ function Login() {
     try {
       let response = await UserClient.post("/login", loginObject);
       console.log("response", response);
-      ShowNotification(response.data.message, "Success", "GREEN");
+      ShowNotification(response.data.message, "SUCCESS");
     } catch (e) {
       console.log("Error: ", e)
-      ShowNotification(e.response.data.message, "Failed", "RED");
+      ShowNotification(e.response.data.message, "FAILED");
     }
   };
 
   return (
     <div>
-      <div className="card">
+      <div className="card" style={{"maxWidth": "41rem"}}>
         <h5 className="card-header">Login</h5>
         <div className="card-body">
           <form onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ function Login() {
           </form>
         </div>
       </div>
-      <p className="mt-2">New user, please go to <Link to="/signup">Sign Up</Link> page</p>
+      <p className="mt-2" style={{color: "#ff7f00f0"}}>New user, please go to <Link to="/signup">Sign Up</Link> page</p>
     </div>
   );
 }
