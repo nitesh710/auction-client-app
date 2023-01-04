@@ -1,9 +1,10 @@
 import { useState } from "react";
 import UserClient from "../apis/UserClient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import ShowNotification from "../Utils/notifications";
 
 function Login() {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,16 +26,21 @@ function Login() {
     event.preventDefault();
     const loginObject = { userName, password };
     console.log("loginObject", loginObject);
-    setUserName("");
-    setPassword("");
     try {
       let response = await UserClient.post("/login", loginObject);
       console.log("response", response);
-      ShowNotification(response.data.message, "SUCCESS");
+      if(response && response.data.status == "Success"){
+        setTimeout(() => {
+          navigate("/deals");
+        }, 1000);
+        ShowNotification(response.data.message, "SUCCESS");
+      }
     } catch (e) {
       console.log("Error: ", e);
       ShowNotification(e.response.data.message, "FAILED");
     }
+    setUserName("");
+    setPassword("");
   };
 
   return (
