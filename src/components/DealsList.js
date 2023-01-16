@@ -13,7 +13,7 @@ function DealsList() {
     };
     getAllProducts();
   }, []);
-  
+
   let renderedDealsList = dealsList.map((deal) => {
     return (
       <li className="mr-4 md:mr-6" key={deal._id}>

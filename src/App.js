@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,7 +6,6 @@ import Header from "./headers/NavBar";
 import DealsList from "./components/DealsList";
 import Sell from "./components/Sell";
 import DealDetails from "./components/DealDetails";
-import AxiosClient from "./apis/axiosClient";
 
 function App (){
     return (
