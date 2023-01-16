@@ -1,9 +1,20 @@
+import { Link } from "react-router-dom";
+import DealDetails from "./DealDetails";
+
 function Deal({ deal }){
     return (
-        <img
-            src={`https://picsum.photos/seed/${deal.id}/200/200`}
-            alt="image"
-        />
+        <div>
+            <Link to={`/deals-details/${deal._id}`}>
+                <img
+                    src={deal.imageUrl}
+                    alt="image"
+                />
+                <div className="flex justify-content-between">
+                    <label>{deal.name}</label>
+                    <span>${deal.price}</span>
+                </div>
+            </Link>
+        </div>
     );
 }
 

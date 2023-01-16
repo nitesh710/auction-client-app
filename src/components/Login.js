@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UserClient from "../apis/UserClient";
+import AxiosClient from "../apis/axiosClient";
 import { Link, useNavigate  } from "react-router-dom";
 import ShowNotification from "../Utils/notifications";
 
@@ -25,10 +25,8 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const loginObject = { userName, password };
-    console.log("loginObject", loginObject);
     try {
-      let response = await UserClient.post("/login", loginObject);
-      console.log("response", response);
+      let response = await AxiosClient.post("/login", loginObject);
       if(response && response.data.status == "Success"){
         setTimeout(() => {
           navigate("/deals");

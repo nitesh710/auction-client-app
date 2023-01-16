@@ -6,10 +6,10 @@ const Navbar = () => {
       <PrimaryNav>
         <Hamburger />
         <Menu>
-          <MenuLink to="/signup" activeStyle className="hover:text-white">
+          <MenuLink to="/signup" activestyle="true" className="hover:text-white">
             Sign Up
           </MenuLink>
-          <MenuLink to="/login" activeStyle className="hover:text-white">
+          <MenuLink to="/login" activestyle="true" className="hover:text-white">
             Login
           </MenuLink>
         </Menu>

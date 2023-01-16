@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -5,6 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import Header from "./headers/NavBar";
 import DealsList from "./components/DealsList";
 import Sell from "./components/Sell";
+import DealDetails from "./components/DealDetails";
+import AxiosClient from "./apis/axiosClient";
 
 function App (){
     return (
@@ -14,11 +17,12 @@ function App (){
                 <Header />
                 <div className="container mt-5">
                     <Routes>
-                        <Route path="/" element={<Login />}></Route>
+                        <Route path="/" element={<DealsList />}></Route>
                         <Route path="/login" element={<Login />}></Route>
                         <Route path="/signup" element={<SignUp />}></Route>
                         <Route path="/deals" element={<DealsList />}></Route>
                         <Route path="/sell" element={<Sell />}></Route>
+                        <Route path="/deals-details/:dealId" element={<DealDetails />}></Route>
                     </Routes>
                 </div>
             </Router>

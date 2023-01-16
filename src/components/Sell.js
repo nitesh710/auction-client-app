@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UserClient from "../apis/UserClient";
+import AxiosClient from "../apis/axiosClient";
 import { Link, useNavigate  } from "react-router-dom";
 import ShowNotification from "../Utils/notifications";
 
@@ -14,7 +14,7 @@ function Sell() {
     const handleInput = (event) => {
         let { name, value } = event.target
         if(name == "price" || name == "quantity"){
-            value =  parseFloat(value);
+            value =  value ? parseFloat(value) : 0;
         }
         let updatedValue = {[name]: value};
         setProduct(product => ({
@@ -27,11 +27,11 @@ function Sell() {
         event.preventDefault();
         console.log("product", product);
         try {
-            /* let response = await UserClient.post("/login", sellObject);
+            let response = await AxiosClient.post("/products", product);
             console.log("response", response);
             if(response && response.data.status == "Success"){
                 ShowNotification(response.data.message, "SUCCESS");
-            } */
+            }
         } catch (e) {
             console.log("Error: ", e);
             ShowNotification(e.response.data.message, "FAILED");

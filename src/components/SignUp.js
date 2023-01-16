@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UserClient from "../apis/UserClient";
+import AxiosClient from "../apis/axiosClient";
 import { Link } from "react-router-dom";
 import ValidateObject from "../Utils/utils";
 import ShowNotification from "../Utils/notifications";
@@ -33,7 +33,6 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userObject = { userName, password, city, state };
-    console.log("userObject", userObject);
     setUserName("");
     setPassword("");
     setCity("");
@@ -41,7 +40,7 @@ function SignUp() {
     try {
       let isValidate = await ValidateObject(userObject);
       if (isValidate) {
-        let response = await UserClient.post("/signup", userObject);
+        let response = await AxiosClient.post("/signup", userObject);
         ShowNotification(response.data.message, "SUCCESS");
       }
     } catch (e) {

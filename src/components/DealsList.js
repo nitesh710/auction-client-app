@@ -1,17 +1,22 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Deal from "./Deal";
+import AxiosClient from "../apis/axiosClient";
 
 function DealsList() {
-  let dealsList = [
-    { id: 1, name: "name1" },
-    { id: 2, name: "name2" },
-    { id: 3, name: "name3" },
-    { id: 4, name: "name4" },
-    { id: 5, name: "name5" }
-  ];
+  const [dealsList, setDealsList] = useState([]);
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      let response = await AxiosClient.get("/products");
+      setDealsList(response.data.data);
+    };
+    getAllProducts();
+  }, []);
+  
   let renderedDealsList = dealsList.map((deal) => {
     return (
-      <li className="mr-4 md:mr-6" key={deal.id}>
+      <li className="mr-4 md:mr-6" key={deal._id}>
         <Deal deal={deal} />
       </li>
     );
